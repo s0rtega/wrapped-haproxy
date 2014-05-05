@@ -1,0 +1,19 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-14.04
+    driver_config:
+      box: "Ubuntu_14_04_HA"
+      box_url: https://vagrantcloud.com/chef/ubuntu-14.04/version/1/provider/virtualbox.box
+
+suites:
+  - name: default
+    run_list:
+      - recipe[curl::default]
+      - recipe[foo::default]
+    attributes:
